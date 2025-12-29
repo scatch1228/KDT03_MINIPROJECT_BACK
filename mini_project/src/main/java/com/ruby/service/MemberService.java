@@ -11,7 +11,16 @@ import lombok.RequiredArgsConstructor;
 public class MemberService {
 	private final MemberRepo mrepo;
 	
-	public void signup(Member member) {
+	public void signup(Member member) {		
+		/*
+		@Valid
+		Member member = Member.builder()
+				.mid(dto.getMid())
+				.pwd(dto.getPwd())
+				.alias(dto.getAlias())
+				.build()
+				;*/
+		
 		mrepo.save(member);
 	}
 }

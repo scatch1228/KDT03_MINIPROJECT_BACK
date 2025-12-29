@@ -17,8 +17,15 @@ public class MemberController {
 	
 	@PostMapping("/auth/signup")
 	public ResponseEntity<?> signup(@Valid @RequestBody Member member) {
-			mserv.signup(member);		
+			mserv.signup(member);	
+			
 		return ResponseEntity.ok("Signup Success");
 	}
 	
+	@PostMapping("api/v1/login")
+	public ResponseEntity<?> login(@RequestBody Member member){
+		mserv.login(member);
+		
+		return ResponseEntity.ok("Login Success");
+	}
 }

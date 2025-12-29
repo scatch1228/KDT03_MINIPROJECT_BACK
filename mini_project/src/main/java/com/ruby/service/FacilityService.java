@@ -20,10 +20,14 @@ public class FacilityService {
 	// ==================Search
 	// ==================Search
 	// ==================Search
-	public Map<String, Object> getFacility(String name, String city, String gugun, String type, Integer pageNo) {
+	public Map<String, Object> getFacility(String name, String city, String gugun, String type, String sort, Integer pageNo) {
 		Map<String, Object> ret = new HashMap<>();
-
-		Pageable paging = PageRequest.of(pageNo, 20, Direction.ASC, "name");
+			
+		Pageable paging = sort.equals("star") 
+				? PageRequest.of(pageNo, 20, Direction.DESC, "star")
+				: sort.equals("new") 
+				? PageRequest.of(pageNo, 20, Direction.DESC, "createDate")
+				: PageRequest.of(pageNo, 20, Direction.ASC, "name");
 		if (name != null) {
 			if (city != null) {
 				if (gugun != null) {

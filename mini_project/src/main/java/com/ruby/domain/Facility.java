@@ -1,5 +1,8 @@
 package com.ruby.domain;
 
+import org.hibernate.annotations.Formula;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -27,8 +30,11 @@ public class Facility {
 	private Double lat;
 	private String name;
 	private String type;
+	@JsonIgnore
 	private String zip;
+	@JsonIgnore
 	private String addr1;
+	@JsonIgnore
 	private String addr2;
 	private String city;
 	private String gugun;
@@ -36,6 +42,17 @@ public class Facility {
 	private String createDate;
 	private Character erdsgn;
 	private String updated;
+	
+	// This is a virtual field. Hibernate runs this subquery automatically.
+    // Note: Use the actual table/column names from your DB here.
+	// coalesce occurs when r.star is null
+    @Formula("(SELECT COALESCE(AVG(r.star), 0) FROM review r WHERE r.fid = fid)")
+    private Double star;
+
+    @JsonProperty("star")
+    public Double getStar() {
+        return (double) (Math.round(star*10)/10);
+    }
 	
 	@JsonProperty("fulladdr")
 	public String getFullAddr() {

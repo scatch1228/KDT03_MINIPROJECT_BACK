@@ -1,4 +1,6 @@
-package com.ruby.domain.dto;
+package com.ruby.domain.dto.request;
+
+import com.ruby.domain.dto.ReviewDTO;
 
 import lombok.Getter;
 import lombok.Setter;

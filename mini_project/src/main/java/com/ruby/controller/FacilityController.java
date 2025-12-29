@@ -15,9 +15,9 @@ public class FacilityController {
 	
 	//통합검색 메서드
 	@GetMapping("/facility")
-	public ResponseEntity<?> getFacility(String name, String city, String gugun, String type, 
+	public ResponseEntity<?> getFacility(String name, String city, String gugun, String type, @RequestParam(defaultValue = "name") String sort, 
 			@RequestParam(defaultValue = "0") Integer pageNo){
-		return ResponseEntity.ok(fserv.getFacility(name, city, gugun, type, pageNo));
+		return ResponseEntity.ok(fserv.getFacility(name, city, gugun, type, sort, pageNo));
 	}
 	
 	//count 메서드

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ruby.domain.dto.ReviewRequestDTO;
+import com.ruby.domain.dto.request.ReviewRequestDTO;
 import com.ruby.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;
