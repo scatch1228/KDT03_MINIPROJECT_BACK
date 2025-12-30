@@ -75,5 +75,8 @@ public interface FacilityRepo extends JpaRepository<Facility, Integer>{
 	@Query(value = "SELECT count(*) FROM facility WHERE create_date <= DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 25 YEAR), '%Y%m%d') AND city=?1", 
 			nativeQuery = true)
 	Integer countOldInCity(String city);
+	@Query(value = "SELECT count(*) FROM facility WHERE erdsgn='Y' AND city=?1", 
+			nativeQuery = true)
+	Integer countERDInCity(String city);
 	
 }

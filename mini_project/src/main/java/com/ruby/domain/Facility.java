@@ -31,8 +31,6 @@ public class Facility {
 	private String name;
 	private String type;
 	@JsonIgnore
-	private String zip;
-	@JsonIgnore
 	private String addr1;
 	@JsonIgnore
 	private String addr2;
@@ -41,7 +39,6 @@ public class Facility {
 	private String tel;
 	private String createDate;
 	private Character erdsgn;
-	private String updated;
 	
 	// This is a virtual field. Hibernate runs this subquery automatically.
     // Note: Use the actual table/column names from your DB here.
@@ -58,8 +55,7 @@ public class Facility {
 	public String getFullAddr() {
 		return String.format("%s %s %s",
 				this.addr1 != null ? this.addr1 : "",
-				this.addr2 != null ? this.addr2 : "",
-				this.zip != null ? this.zip : ""
+				this.addr2 != null ? this.addr2 : ""
 				);
 	}
 }

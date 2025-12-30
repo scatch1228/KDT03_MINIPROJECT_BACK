@@ -27,7 +27,12 @@ public class FacilityController {
 	}
 	
 	@GetMapping("/count/old")
-	public ResponseEntity<?> getCount(String city){
+	public ResponseEntity<?> getCountOld(String city){
 		return ResponseEntity.ok(fserv.countOld(city));
+	}
+	
+	@GetMapping("/count/erdsgn")
+	public ResponseEntity<?> getCountERD(String city){
+		return ResponseEntity.ok(fserv.countERD(city));
 	}
 }

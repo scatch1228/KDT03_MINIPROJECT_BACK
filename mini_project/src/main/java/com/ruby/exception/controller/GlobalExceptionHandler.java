@@ -1,14 +1,17 @@
-package com.ruby.exception;
+package com.ruby.exception.controller;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.ruby.exception.DuplicateMemberException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -30,5 +33,10 @@ public class GlobalExceptionHandler {
 		response.put("errors", errorDetails);
 		
 		return ResponseEntity.badRequest().body(response);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<?> handleDuplicateMemberException(DuplicateMemberException e){
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
 	}
 }

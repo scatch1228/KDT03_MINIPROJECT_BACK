@@ -118,4 +118,16 @@ public class FacilityService {
 		
 		return ret;
 	}
+
+	//====================내진설계 count
+	//====================내진설계 count
+	//====================내진설계 count
+	public Map<String, Object> countERD(String city){
+		Map<String, Object> ret = new HashMap<>();
+		
+		ret.put("city", city);
+		ret.put("erdsgn", frepo.countERDInCity(city));
+		ret.put("city_count_total", frepo.countByCityLike(city));
+		return ret;
+	}
 }
