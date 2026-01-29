@@ -1,5 +1,6 @@
 package com.ruby.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,7 @@ public class Review {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer seq;
+	@Column(length = 1000)
 	private String cont;
 	@ManyToOne
 	@JoinColumn(name="fid", nullable = false)
